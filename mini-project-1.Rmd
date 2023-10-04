@@ -1,6 +1,6 @@
 ---
 title: "Mini Data-Analysis Deliverable 1"
-output: html_document
+output: github_document
 ---
 
 # Welcome to your (maybe) first-ever data analysis project!
@@ -103,16 +103,16 @@ To explore attributes of each of the four datasets, I will use the glimpse() fun
 #Vancouver Street Trees
 glimpse(vancouver_trees)
 class(vancouver_trees)
-?vancouver_trees
+#?vancouver_trees Edit: This code is commented out so the documentation does not appear. To run this code for yourself, remove the hashtag and run the command in RStudio
 ```
-Using the glimpse() function, the dataset contains 146,611 rows and 20 variables. 7 variables are double precision (continuous quantitative value), 12 are character strings, and one is a date. The dataset is a tibble. The information it contains is about public trees in the City of Vancouver. It is updated weekly, except for tree attributes which are rarely updated.
+Using the glimpse() function, the dataset contains 146,611 rows and 20 variables. 7 variables are double precision (continuous quantitative value), 12 are character strings, and one is a date. From the class function I learned the dataset is a tibble. In the documentation, I see that the information it contains is about public trees in the City of Vancouver. It is updated weekly, except for tree attributes which are rarely updated.
 
 
 ```{r}
 #Vancouver Parking Meters
 glimpse(parking_meters)
 class(parking_meters)
-?parking_meters
+#?parking_meters
 ```
 This dataset contains 10,032 rows and 22 variables. Two of the variables are double precision and 20 are character strings. The dataset is a tibble. The information it contains is about the rates and time limits for parking meters in Vancouver, shown for entire block faces rather than individual meters. The data is updated weekly.
 
@@ -120,7 +120,7 @@ This dataset contains 10,032 rows and 22 variables. Two of the variables are dou
 #Annual Bow River Banff Flow Rate Extremes
 glimpse(flow_sample)
 class(flow_sample)
-?flow_sample
+#?flow_sample
 ```
 This dataset contains 218 rows and 7 variables. Four of the variables are double precision and three are character strings. The dataset is a tibble. The information contained in this dataset is historical flow rate extrema data collected by the Government of Canada at station 05BB001, located on the Bow River near Banff, Alberta.
 
@@ -128,7 +128,7 @@ This dataset contains 218 rows and 7 variables. Four of the variables are double
 #Vancouver Building Permits
 glimpse(building_permits)
 class(building_permits)
-?building_permits
+#?building_permits
 ```
 This dataset contains 20,680 rows and 14 variables. Three of the varaibles are double precision, one is a date, and 10 are character strings. The dataset is a subclass of tibble. The information it contains is about building permits issued by the City of Vancouver since the year 2017, updated monthly for the current year.
 <!----------------------------------------------------------------------------->
@@ -142,7 +142,7 @@ I will use the vancouver_trees datatset for my analysis. One of the things I app
 1.4 **(2 points)** Time for a  final decision! Going back to the beginning, it's important to have an *end goal* in mind. For example, if I had chosen the `titanic` dataset for my project, I might've wanted to explore the relationship between survival and other variables. Try to think of 1 research question that you would want to answer with your dataset. Note it down below.
 
 <!-------------------------- Start your work below ---------------------------->
-I am interested in exploring the relationship between the tree species and date planted in this dataset, specifically how did the most commonly planted tree species change each decade?
+I am interested in exploring the relationship between the tree species and date planted in this dataset. How did the most commonly planted tree species change over time?
 
 <!----------------------------------------------------------------------------->
 
@@ -172,13 +172,17 @@ Make sure that you're using dplyr and ggplot2 rather than base R for this task. 
 2.2 **(4 points)** For each of the 4 exercises that you complete, provide a *brief explanation* of why you chose that exercise in relation to your data (in other words, why does it make sense to do that?), and sufficient comments for a reader to understand your reasoning and code.
 
 <!-------------------------- Start your work below ---------------------------->
-#Public Street Trees in the City of Vancouver  
-##Introduction
+# Public Street Trees in the City of Vancouver  
+## Introduction
 This is an exploratory data analysis using the R *tidyverse* packages, *dplyr* and *ggplot2*, to investigate a street tree dataset for the City of Vancouver in British Columbia, Canada. The open data portal for this dataset can be found [here.](https://opendata.vancouver.ca/explore/dataset/street-trees/information/?disjunctive.species_name&disjunctive.common_name&disjunctive.on_street&disjunctive.neighbourhood_name&location=6,50.02186,-122.91504)  
-From the website, >The street tree dataset includes a listing of public trees on boulevards in the City of Vancouver and provides data on tree coordinates, species and other related characteristics. Park trees and private trees are not included in the inventory.  
+
+From the website,
+
+>The street tree dataset includes a listing of public trees on boulevards in the City of Vancouver and provides data on tree coordinates, species and other related characteristics. Park trees and private trees are not included in the inventory.
+
 In this analysis, I used *dplyr* for data manipulation and *ggplot2* for visualization. I used some basic functions and created simple plots to explore the dataset. Using what I learned from this initial data exploration, I developed research questions to investigate further.
 
-##Data Overview  
+## Data Overview  
 
 To begin, I loaded the necessary packages using the library() function.
 ```{r}
@@ -196,9 +200,10 @@ summary(vancouver_trees)
 ```
 
 From the glimpse() function I learned that this dataset contains 20 variables and 146,611 observations. 7 variables are double precision (continuous quantitative value), 12 are character strings, and one is a date.  
+
 From the summary() function I learned information about the class of each variable and which variables have missing information (recorded as NA's - in this case, date_planted, longitude and latitude contain missing values).  
 
-##Data Exploration  
+## Data Exploration  
 Before beginning to look for relationships and patterns in the data, I created an object I named 'trees' from the dataset to be sure I did not alter the original dataset.
 
 ```{r}
@@ -207,6 +212,7 @@ trees <- vancouver_trees
 
 **Distribution of a numeric variable**  
 To begin, I plotted the height distribution of the trees in Vancouver to get an idea of the trend in height. The height value, stored in the variable height_range_id, is a numeric variable from 0 to 10 representing discrete height ranges for every 10 feet, where 0= 0-10 ft, 1=10-20 ft, 2=20-30ft, and so on.  
+
 The height variable contains discrete numeric values, therefore I used the geom_bar() function (used to plot one discrete variable) to create a bar chart representing the height distribution for all of the trees in the dataset. The *ggplot2* approach to visualizing data uses a data input, the ggplot() function to create a plot, geom() functions to indicate the plotting style, and aesthetic specifications represented by aes() to map visual cues to variables.
 ```{r}
 #Bar chart showing distribution of tree height
@@ -217,12 +223,14 @@ trees %>% ggplot(aes(height_range_id)) +
   scale_y_continuous(label=scales::comma)+
   theme_bw()
 ```
+
 In the ggplot aesthetic mapping, I specified the x variable height_range_id. I binned the x axis using scale_x_binned() so that the axis values on the chart would correspond with the height range values. I created a title and x and y axis labels using the labs() function. With the scale_y_continuous() function, I added a comma to the y axis values which represent thousands of trees, so they would be easier to read.
 
 From the bar chart we can see that most trees planted in Vancouver fall within the 1 and 2 height range bins, meaning that most trees are 30 ft or less in height.  
 
 
-**Relationship between two variables**
+**Relationship between two variables**  
+
 The dataset contains information about tree diameter and whether or not the tree was planted with a root barrier. I examined the relationship between the continuous numeric variable, diameter, and the categorical variable, root_barrier, using boxplots. I was interested in how the presence of a root barrier might be related to tree size. In the ggplot aesthetic mapping I specified fill to be the root_barrier variable in order to color the two boxplots by the root_barrier output (Y or N). I added a logarithmic y axis using the scale_y_log10() function because the presence of outliers in the diameter values skewed the chart and made it difficult to compare the two boxplots. I used the scale_fill_manual() function to add specific colors to the boxplots and rename the legend title and values to "Root Barrier", "Yes" and "No".
 ```{r}
 #Boxplots of tree diameter stratified by root barrier presence
@@ -235,9 +243,11 @@ trees %>% ggplot(aes(root_barrier, diameter, fill=root_barrier)) +
   ggtitle("Tree diameter, stratified by presence of a root barrier")+
   theme_classic()
 ```
-In this chart, it is clear that trees without a root barrier are larger on average than trees with a root barrier.
+
+From this chart, it is clear that trees without a root barrier are larger on average than trees with a root barrier.
 
 **Density Plot**  
+
 Each tree that was planted has an associated planting date (except for those with missing date values, of which there are 76,548); therefore, a density plot of this numeric variable can be used to explore temporal patterns in the dataset. To visualize trends in planting over time, I created a density plot of the date_planted variable.  I used the function after_stat() and specified 'scaled' to scale the density estimate to a maximum of 1.
 
 ```{r}
@@ -250,8 +260,9 @@ trees %>% ggplot(aes(date_planted, after_stat(scaled)))+
   theme_light()
 ```
 
-**Filtering by a Variable**
-Urban trees provide services like creating shade in the summer and filtering airborne pollutants. Red maple, silver linden, and American elm are three trees that are suitable for urban environments and are efficient at removing airborne particulate matter (PM2.5). To find out how many trees with these common names (i.e. not including cultivars) have been planted in Vancouver, I used the filter() function to select the three trees using the common_name variable. I made a bar chart and flipped the x and y axes using the coord_flip() function so the neighbourhood names would be listed on the y axis. I used the facet_wrap() function to make three comparison plots by common name, to look at patterns between tree type by neighbourhoods.
+**Filtering by a Variable**  
+
+Urban trees provide services like creating shade in the summer and filtering airborne pollutants. Red maple, silver linden, and American elm are three trees that are suitable for urban environments and are efficient at removing airborne particulate matter (PM2.5). To find out how many trees with these common names (i.e. not including cultivars) have been planted in Vancouver, I used the filter() function to select the three trees using the common_name variable. I made a bar chart and flipped the x and y axes using the coord_flip() function so the neighbourhood names would be listed on the y axis. I used the facet_wrap() function to make three comparison plots by common name, to look at patterns between tree types and neighbourhoods.
 ```{r}
 #Bar chart of 3 air pollution-reducing trees by neighbourhood
 trees %>% filter(common_name %in% c("RED MAPLE", "AMERICAN ELM", "SILVER LINDEN")) %>%
@@ -270,10 +281,14 @@ trees %>% filter(common_name %in% c("RED MAPLE", "AMERICAN ELM", "SILVER LINDEN"
 **(4 points)** So far, you have chosen a dataset and gotten familiar with it through exploring the data. You have also brainstormed one research question that interested you (Task 1.4).  Now it's time to pick 4 research questions that you would like to explore in Milestone 2! Write the 4 questions and any additional comments below. 
 
 <!--- *****START HERE***** --->
-**Research Questions**
-1.What are the 10 most commonly planted tree species in Vancouver, and what proportion of each species was planted with a root barrier?
-2.What species of trees were planted between 1995-2000, and how do they compare to those planted between 2010-2015?
-3.Where are the 10 tallest trees located in Vancouver, and what species cultivar are they?
+**Research Questions**  
+
+1.What are the 10 most commonly planted tree species in Vancouver, and what proportion of each species was planted with a root barrier?  
+
+2.What species of trees were planted between 1995-2000, and how do they compare to those planted between 2010-2015?  
+
+3.Where are the 10 tallest trees located in Vancouver, and what species cultivar are they?  
+
 4.What is the distribution of coniferous and deciduous trees by neighbourhood in Vancouver?
 
 

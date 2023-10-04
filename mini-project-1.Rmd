@@ -253,7 +253,7 @@ trees %>% ggplot(aes(date_planted, after_stat(scaled)))+
 **Filtering by a Variable**
 Urban trees provide services like creating shade in the summer and filtering airborne pollutants. Red maple, silver linden, and American elm are three trees that are suitable for urban environments and are efficient at removing airborne particulate matter (PM2.5). To find out how many trees with these common names (i.e. not including cultivars) have been planted in Vancouver, I used the filter() function to select the three trees using the common_name variable. I made a bar chart and flipped the x and y axes using the coord_flip() function so the neighbourhood names would be listed on the y axis. I used the facet_wrap() function to make three comparison plots by common name, to look at patterns between tree type by neighbourhoods.
 ```{r}
-#Bar chart of 
+#Bar chart of 3 air pollution-reducing trees by neighbourhood
 trees %>% filter(common_name %in% c("RED MAPLE", "AMERICAN ELM", "SILVER LINDEN")) %>%
   ggplot(aes(neighbourhood_name, fill=common_name))+
   geom_bar()+

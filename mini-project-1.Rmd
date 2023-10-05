@@ -218,7 +218,7 @@ trees <- vancouver_trees
 To begin, I plotted the height distribution of the trees in Vancouver to get an idea of the trend in height. The height value, stored in the variable height_range_id, is a numeric variable from 0 to 10 representing discrete height ranges for every 10 feet, where 0= 0-10 ft, 1=10-20 ft, 2=20-30ft, and so on.  
 
 The height variable contains discrete numeric values, therefore I used the geom_bar() function (used to plot one discrete variable) to create a bar chart representing the height distribution for all of the trees in the dataset. The *ggplot2* approach to visualizing data uses a data input, the ggplot() function to create a plot, geom() functions to indicate the plotting style, and aesthetic specifications represented by aes() to map visual cues to variables.
-```{r}
+```{r Bar chart tree height distribution}
 #Bar chart showing distribution of tree height
 trees %>% ggplot(aes(height_range_id)) + 
  geom_bar(fill="palegreen3")+
@@ -236,7 +236,7 @@ From the bar chart we can see that most trees planted in Vancouver fall within t
 **Relationship between two variables**  
 
 The dataset contains information about tree diameter and whether or not the tree was planted with a root barrier. I examined the relationship between the continuous numeric variable, diameter, and the categorical variable, root_barrier, using boxplots. I was interested in how the presence of a root barrier might be related to tree size. In the ggplot aesthetic mapping I specified fill to be the root_barrier variable in order to color the two boxplots by the root_barrier output (Y or N). I added a logarithmic y axis using the scale_y_log10() function because the presence of outliers in the diameter values skewed the chart and made it difficult to compare the two boxplots. I used the scale_fill_manual() function to add specific colors to the boxplots and rename the legend title and values to "Root Barrier", "Yes" and "No".
-```{r}
+```{r Boxplots tree diameter by root barrier}
 #Boxplots of tree diameter stratified by root barrier presence
 trees %>% ggplot(aes(root_barrier, diameter, fill=root_barrier)) +
   geom_boxplot()+
@@ -254,7 +254,7 @@ From this chart, it is clear that trees without a root barrier are larger on ave
 
 Each tree that was planted has an associated planting date (except for those with missing date values, of which there are 76,548); therefore, a density plot of this numeric variable can be used to explore temporal patterns in the dataset. To visualize trends in planting over time, I created a density plot of the date_planted variable.  I used the function after_stat() in the ggplot aesthetics and specified 'scaled' to scale the density estimate to a maximum of 1.
 
-```{r}
+```{r Density plot date planted}
 #Density plot of planting date
 trees %>% ggplot(aes(date_planted, after_stat(scaled)))+
    geom_density()+
@@ -267,7 +267,7 @@ trees %>% ggplot(aes(date_planted, after_stat(scaled)))+
 **Filtering by a Variable**  
 
 Urban trees provide services like creating shade in the summer and filtering airborne pollutants. Red maple, silver linden, and American elm are three trees that are suitable for urban environments and are efficient at removing airborne particulate matter (PM2.5). To find out how many trees with these common names (i.e. not including cultivars) have been planted in Vancouver, I used the filter() function to select the three trees using the common_name variable. I made a bar chart and flipped the x and y axes using the coord_flip() function so the neighbourhood names would be listed on the y axis. I used the facet_wrap() function to make three comparison plots by common name, to look at patterns between tree types and neighbourhoods.
-```{r}
+```{r Bar chart tree name by neighbourhood}
 #Bar chart of 3 air pollution-reducing trees by neighbourhood
 trees %>% filter(common_name %in% c("RED MAPLE", "AMERICAN ELM", "SILVER LINDEN")) %>%
   ggplot(aes(neighbourhood_name, fill=common_name))+

@@ -184,11 +184,11 @@ comments outside of the code chunk?
 **Dataset exploration**  
 To explore attributes of each of the four datasets, I will use the
 glimpse() function from the *dplyr* package to find out the number of
-columns (variables), rows (observations), and the class type for each
-variable. I will check the class of the dataset using the class()
-function in base R. Finally, I will look up the R documentation
-associated with each dataset to read the description of the dataset and
-its’ variables.
+columns (variables) and rows (observations), and the summary() function
+to learn the class type for each variable. I will check the class of the
+dataset using the class() function in base R. Finally, I will look up
+the R documentation associated with each dataset to read the description
+of the dataset and its’ variables.
 
 ``` r
 #Vancouver Street Trees
@@ -219,6 +219,51 @@ glimpse(vancouver_trees)
     ## $ latitude           <dbl> 49.21776, 49.21776, 49.23938, 49.23469, 49.23894, 4…
 
 ``` r
+summary(vancouver_trees)
+```
+
+    ##     tree_id        civic_number    std_street         genus_name       
+    ##  Min.   :    12   Min.   :    0   Length:146611      Length:146611     
+    ##  1st Qu.: 65464   1st Qu.: 1306   Class :character   Class :character  
+    ##  Median :134903   Median : 2604   Mode  :character   Mode  :character  
+    ##  Mean   :131892   Mean   : 2937                                        
+    ##  3rd Qu.:194450   3rd Qu.: 4005                                        
+    ##  Max.   :266203   Max.   :17888                                        
+    ##                                                                        
+    ##  species_name       cultivar_name      common_name          assigned        
+    ##  Length:146611      Length:146611      Length:146611      Length:146611     
+    ##  Class :character   Class :character   Class :character   Class :character  
+    ##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+    ##                                                                             
+    ##                                                                             
+    ##                                                                             
+    ##                                                                             
+    ##  root_barrier        plant_area        on_street_block  on_street        
+    ##  Length:146611      Length:146611      Min.   :   0    Length:146611     
+    ##  Class :character   Class :character   1st Qu.:1300    Class :character  
+    ##  Mode  :character   Mode  :character   Median :2600    Mode  :character  
+    ##                                        Mean   :2909                      
+    ##                                        3rd Qu.:4000                      
+    ##                                        Max.   :9900                      
+    ##                                                                          
+    ##  neighbourhood_name street_side_name   height_range_id     diameter     
+    ##  Length:146611      Length:146611      Min.   : 0.000   Min.   :  0.00  
+    ##  Class :character   Class :character   1st Qu.: 1.000   1st Qu.:  3.50  
+    ##  Mode  :character   Mode  :character   Median : 2.000   Median :  9.00  
+    ##                                        Mean   : 2.627   Mean   : 11.49  
+    ##                                        3rd Qu.: 4.000   3rd Qu.: 16.50  
+    ##                                        Max.   :10.000   Max.   :435.00  
+    ##                                                                         
+    ##      curb            date_planted          longitude         latitude    
+    ##  Length:146611      Min.   :1989-10-27   Min.   :-123.2   Min.   :49.20  
+    ##  Class :character   1st Qu.:1998-02-23   1st Qu.:-123.1   1st Qu.:49.23  
+    ##  Mode  :character   Median :2004-01-28   Median :-123.1   Median :49.25  
+    ##                     Mean   :2004-04-07   Mean   :-123.1   Mean   :49.25  
+    ##                     3rd Qu.:2010-03-02   3rd Qu.:-123.1   3rd Qu.:49.26  
+    ##                     Max.   :2019-07-03   Max.   :-123.0   Max.   :49.29  
+    ##                     NA's   :76548        NA's   :22771    NA's   :22771
+
+``` r
 class(vancouver_trees)
 ```
 
@@ -230,12 +275,11 @@ class(vancouver_trees)
 ```
 
 Using the glimpse() function, the dataset contains 146,611 rows and 20
-variables. 7 variables are double precision (continuous quantitative
-value), 12 are character strings, and one is a date. From the class
-function I learned the dataset is a tibble. In the documentation, I see
-that the information it contains is about public trees in the City of
-Vancouver. It is updated weekly, except for tree attributes which are
-rarely updated.
+variables. From summary(), 7 variables are numeric, 12 are character
+strings, and one is a date. From the class function I learned the
+dataset is a tibble. In the documentation, I see that the information it
+contains is about public trees in the City of Vancouver. It is updated
+weekly, except for tree attributes which are rarely updated.
 
 ``` r
 #Vancouver Parking Meters
@@ -268,6 +312,53 @@ glimpse(parking_meters)
     ## $ meter_id       <chr> "670805", "471405", "C80145", "D03704", "301023", "5913…
 
 ``` r
+summary(parking_meters)
+```
+
+    ##   meter_head         r_mf_9a_6p         r_mf_6p_10         r_sa_9a_6p       
+    ##  Length:10032       Length:10032       Length:10032       Length:10032      
+    ##  Class :character   Class :character   Class :character   Class :character  
+    ##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+    ##                                                                             
+    ##                                                                             
+    ##                                                                             
+    ##   r_sa_6p_10         r_su_9a_6p         r_su_6p_10         rate_misc        
+    ##  Length:10032       Length:10032       Length:10032       Length:10032      
+    ##  Class :character   Class :character   Class :character   Class :character  
+    ##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+    ##                                                                             
+    ##                                                                             
+    ##                                                                             
+    ##  time_in_effect      t_mf_9a_6p         t_mf_6p_10         t_sa_9a_6p       
+    ##  Length:10032       Length:10032       Length:10032       Length:10032      
+    ##  Class :character   Class :character   Class :character   Class :character  
+    ##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+    ##                                                                             
+    ##                                                                             
+    ##                                                                             
+    ##   t_sa_6p_10         t_su_9a_6p         t_su_6p_10         time_misc        
+    ##  Length:10032       Length:10032       Length:10032       Length:10032      
+    ##  Class :character   Class :character   Class :character   Class :character  
+    ##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+    ##                                                                             
+    ##                                                                             
+    ##                                                                             
+    ##  credit_card         pay_phone           longitude         latitude    
+    ##  Length:10032       Length:10032       Min.   :-123.2   Min.   :49.21  
+    ##  Class :character   Class :character   1st Qu.:-123.1   1st Qu.:49.26  
+    ##  Mode  :character   Mode  :character   Median :-123.1   Median :49.27  
+    ##                                        Mean   :-123.1   Mean   :49.27  
+    ##                                        3rd Qu.:-123.1   3rd Qu.:49.28  
+    ##                                        Max.   :-123.0   Max.   :49.29  
+    ##  geo_local_area       meter_id        
+    ##  Length:10032       Length:10032      
+    ##  Class :character   Class :character  
+    ##  Mode  :character   Mode  :character  
+    ##                                       
+    ##                                       
+    ## 
+
+``` r
 class(parking_meters)
 ```
 
@@ -279,10 +370,10 @@ class(parking_meters)
 ```
 
 This dataset contains 10,032 rows and 22 variables. Two of the variables
-are double precision and 20 are character strings. The dataset is a
-tibble. The information it contains is about the rates and time limits
-for parking meters in Vancouver, shown for entire block faces rather
-than individual meters. The data is updated weekly.
+are numeric and 20 are character strings. The dataset is a tibble. The
+information it contains is about the rates and time limits for parking
+meters in Vancouver, shown for entire block faces rather than individual
+meters. The data is updated weekly.
 
 ``` r
 #Annual Bow River Banff Flow Rate Extremes
@@ -300,6 +391,27 @@ glimpse(flow_sample)
     ## $ sym          <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
 
 ``` r
+summary(flow_sample)
+```
+
+    ##   station_id             year      extreme_type           month       
+    ##  Length:218         Min.   :1909   Length:218         Min.   : 1.000  
+    ##  Class :character   1st Qu.:1936   Class :character   1st Qu.: 3.000  
+    ##  Mode  :character   Median :1963   Mode  :character   Median : 6.000  
+    ##                     Mean   :1963                      Mean   : 5.046  
+    ##                     3rd Qu.:1990                      3rd Qu.: 6.000  
+    ##                     Max.   :2018                      Max.   :12.000  
+    ##                                                       NA's   :2       
+    ##       day             flow            sym           
+    ##  Min.   : 1.00   Min.   :  3.62   Length:218        
+    ##  1st Qu.: 8.00   1st Qu.:  6.18   Class :character  
+    ##  Median :17.00   Median :114.00   Mode  :character  
+    ##  Mean   :16.24   Mean   :110.13                     
+    ##  3rd Qu.:25.00   3rd Qu.:204.25                     
+    ##  Max.   :31.00   Max.   :466.00                     
+    ##  NA's   :2       NA's   :2
+
+``` r
 class(flow_sample)
 ```
 
@@ -311,10 +423,10 @@ class(flow_sample)
 ```
 
 This dataset contains 218 rows and 7 variables. Four of the variables
-are double precision and three are character strings. The dataset is a
-tibble. The information contained in this dataset is historical flow
-rate extrema data collected by the Government of Canada at station
-05BB001, located on the Bow River near Banff, Alberta.
+are numeric and three are character strings. The dataset is a tibble.
+The information contained in this dataset is historical flow rate
+extrema data collected by the Government of Canada at station 05BB001,
+located on the Bow River near Banff, Alberta.
 
 ``` r
 #Vancouver Building Permits
@@ -339,6 +451,43 @@ glimpse(building_permits)
     ## $ bi_id                       <dbl> 524, 535, 539, 541, 543, 546, 547, 548, 54…
 
 ``` r
+summary(building_permits)
+```
+
+    ##  permit_number        issue_date         project_value       type_of_work      
+    ##  Length:20680       Min.   :2017-01-03   Min.   :        0   Length:20680      
+    ##  Class :character   1st Qu.:2017-09-25   1st Qu.:    10739   Class :character  
+    ##  Mode  :character   Median :2018-07-18   Median :    48000   Mode  :character  
+    ##                     Mean   :2018-07-24   Mean   :   609166                     
+    ##                     3rd Qu.:2019-05-13   3rd Qu.:   217791                     
+    ##                     Max.   :2020-04-29   Max.   :807185500                     
+    ##                                          NA's   :52                            
+    ##    address          project_description building_contractor
+    ##  Length:20680       Length:20680        Length:20680       
+    ##  Class :character   Class :character    Class :character   
+    ##  Mode  :character   Mode  :character    Mode  :character   
+    ##                                                            
+    ##                                                            
+    ##                                                            
+    ##                                                            
+    ##  building_contractor_address  applicant         applicant_address 
+    ##  Length:20680                Length:20680       Length:20680      
+    ##  Class :character            Class :character   Class :character  
+    ##  Mode  :character            Mode  :character   Mode  :character  
+    ##                                                                   
+    ##                                                                   
+    ##                                                                   
+    ##                                                                   
+    ##  property_use       specific_use_category      year          bi_id      
+    ##  Length:20680       Length:20680          Min.   :2017   Min.   :    1  
+    ##  Class :character   Class :character      1st Qu.:2017   1st Qu.: 5171  
+    ##  Mode  :character   Mode  :character      Median :2018   Median :10340  
+    ##                                           Mean   :2018   Mean   :10340  
+    ##                                           3rd Qu.:2019   3rd Qu.:15510  
+    ##                                           Max.   :2020   Max.   :20680  
+    ## 
+
+``` r
 class(building_permits)
 ```
 
@@ -350,10 +499,10 @@ class(building_permits)
 ```
 
 This dataset contains 20,680 rows and 14 variables. Three of the
-varaibles are double precision, one is a date, and 10 are character
-strings. The dataset is a subclass of tibble. The information it
-contains is about building permits issued by the City of Vancouver since
-the year 2017, updated monthly for the current year.
+varaibles are numeric, one is a date, and 10 are character strings. The
+dataset is a subclass of tibble. The information it contains is about
+building permits issued by the City of Vancouver since the year 2017,
+updated monthly for the current year.
 <!----------------------------------------------------------------------------->
 
 1.3 **(1 point)** Now that you’ve explored the 4 datasets that you were

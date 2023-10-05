@@ -601,7 +601,7 @@ trees %>% ggplot(aes(height_range_id)) +
   theme_bw()
 ```
 
-![](mini-project-1_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](mini-project-1_files/figure-gfm/Bar%20chart%20tree%20height%20distribution-1.png)<!-- -->
 
 In the ggplot aesthetic mapping, I specified the x variable
 height_range_id. I binned the x axis using scale_x_binned() so that the
@@ -646,7 +646,7 @@ trees %>% ggplot(aes(root_barrier, diameter, fill=root_barrier)) +
 
     ## Warning: Removed 92 rows containing non-finite values (`stat_boxplot()`).
 
-![](mini-project-1_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](mini-project-1_files/figure-gfm/Boxplots%20tree%20diameter%20by%20root%20barrier-1.png)<!-- -->
 
 From this chart, it is clear that trees without a root barrier are
 larger on average than trees with a root barrier.
@@ -673,7 +673,7 @@ trees %>% ggplot(aes(date_planted, after_stat(scaled)))+
 
     ## Warning: Removed 76548 rows containing non-finite values (`stat_density()`).
 
-![](mini-project-1_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](mini-project-1_files/figure-gfm/Density%20plot%20date%20planted-1.png)<!-- -->
 
 **Filtering by a Variable**
 
@@ -701,7 +701,7 @@ trees %>% filter(common_name %in% c("RED MAPLE", "AMERICAN ELM", "SILVER LINDEN"
   theme(legend.position="none")
 ```
 
-![](mini-project-1_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](mini-project-1_files/figure-gfm/Bar%20chart%20tree%20name%20by%20neighbourhood-1.png)<!-- -->
 <!----------------------------------------------------------------------------->
 
 # Task 3: Choose research questions

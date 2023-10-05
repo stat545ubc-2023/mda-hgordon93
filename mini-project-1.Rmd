@@ -97,44 +97,48 @@ And that is exactly the first thing that you will do!
 
 <!-------------------------- Start your work below ---------------------------->
 **Dataset exploration**  
-To explore attributes of each of the four datasets, I will use the glimpse() function from the *dplyr* package to find out the number of columns (variables), rows (observations), and the class type for each variable. I will check the class of the dataset using the class() function in base R. Finally, I will look up the R documentation associated with each dataset to read the  description of the dataset and its' variables.
+To explore attributes of each of the four datasets, I will use the glimpse() function from the *dplyr* package to find out the number of columns (variables) and rows (observations), and the summary() function to learn the class type for each variable. I will check the class of the dataset using the class() function in base R. Finally, I will look up the R documentation associated with each dataset to read the  description of the dataset and its' variables.
 
 ```{r}
 #Vancouver Street Trees
 glimpse(vancouver_trees)
+summary(vancouver_trees)
 class(vancouver_trees)
 #Documentation
 #?vancouver_trees Edit: This code is commented out so the documentation does not appear. To run this code for yourself, remove the hashtag and run the command in RStudio
 ```
-Using the glimpse() function, the dataset contains 146,611 rows and 20 variables. 7 variables are double precision (continuous quantitative value), 12 are character strings, and one is a date. From the class function I learned the dataset is a tibble. In the documentation, I see that the information it contains is about public trees in the City of Vancouver. It is updated weekly, except for tree attributes which are rarely updated.
+Using the glimpse() function, the dataset contains 146,611 rows and 20 variables. From summary(), 7 variables are numeric, 12 are character strings, and one is a date. From the class function I learned the dataset is a tibble. In the documentation, I see that the information it contains is about public trees in the City of Vancouver. It is updated weekly, except for tree attributes which are rarely updated.
 
 
 ```{r}
 #Vancouver Parking Meters
 glimpse(parking_meters)
+summary(parking_meters)
 class(parking_meters)
 #Documentation
 #?parking_meters
 ```
-This dataset contains 10,032 rows and 22 variables. Two of the variables are double precision and 20 are character strings. The dataset is a tibble. The information it contains is about the rates and time limits for parking meters in Vancouver, shown for entire block faces rather than individual meters. The data is updated weekly.
+This dataset contains 10,032 rows and 22 variables. Two of the variables are numeric and 20 are character strings. The dataset is a tibble. The information it contains is about the rates and time limits for parking meters in Vancouver, shown for entire block faces rather than individual meters. The data is updated weekly.
 
 ```{r}
 #Annual Bow River Banff Flow Rate Extremes
 glimpse(flow_sample)
+summary(flow_sample)
 class(flow_sample)
 #Documentation
 #?flow_sample
 ```
-This dataset contains 218 rows and 7 variables. Four of the variables are double precision and three are character strings. The dataset is a tibble. The information contained in this dataset is historical flow rate extrema data collected by the Government of Canada at station 05BB001, located on the Bow River near Banff, Alberta.
+This dataset contains 218 rows and 7 variables. Four of the variables are numeric and three are character strings. The dataset is a tibble. The information contained in this dataset is historical flow rate extrema data collected by the Government of Canada at station 05BB001, located on the Bow River near Banff, Alberta.
 
 ```{r}
 #Vancouver Building Permits
 glimpse(building_permits)
+summary(building_permits)
 class(building_permits)
 #Documentation
 #?building_permits
 ```
-This dataset contains 20,680 rows and 14 variables. Three of the varaibles are double precision, one is a date, and 10 are character strings. The dataset is a subclass of tibble. The information it contains is about building permits issued by the City of Vancouver since the year 2017, updated monthly for the current year.
+This dataset contains 20,680 rows and 14 variables. Three of the varaibles are numeric, one is a date, and 10 are character strings. The dataset is a subclass of tibble. The information it contains is about building permits issued by the City of Vancouver since the year 2017, updated monthly for the current year.
 <!----------------------------------------------------------------------------->
 
 1.3 **(1 point)** Now that you've explored the 4 datasets that you were initially most interested in, let's narrow it down to 1. What lead you to choose this one? Briefly explain your choice below.

@@ -161,10 +161,10 @@ understand your data.
 
 <!-------------------------- Start your work below ---------------------------->
 
-1: CHOICE_1_vancouver_trees  
-2: CHOICE_2_parking_meters  
-3: CHOICE_3_flow_sample  
-4: CHOICE_4_building_permits
+1: CHOICE_1 vancouver_trees  
+2: CHOICE_2 parking_meters  
+3: CHOICE_3 flow_sample  
+4: CHOICE_4 building_permits
 
 <!----------------------------------------------------------------------------->
 
@@ -225,6 +225,7 @@ class(vancouver_trees)
     ## [1] "tbl_df"     "tbl"        "data.frame"
 
 ``` r
+#Documentation
 #?vancouver_trees Edit: This code is commented out so the documentation does not appear. To run this code for yourself, remove the hashtag and run the command in RStudio
 ```
 
@@ -273,6 +274,7 @@ class(parking_meters)
     ## [1] "tbl_df"     "tbl"        "data.frame"
 
 ``` r
+#Documentation
 #?parking_meters
 ```
 
@@ -304,6 +306,7 @@ class(flow_sample)
     ## [1] "tbl_df"     "tbl"        "data.frame"
 
 ``` r
+#Documentation
 #?flow_sample
 ```
 
@@ -342,6 +345,7 @@ class(building_permits)
     ## [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame"
 
 ``` r
+#Documentation
 #?building_permits
 ```
 
@@ -654,8 +658,8 @@ those with missing date values, of which there are 76,548); therefore, a
 density plot of this numeric variable can be used to explore temporal
 patterns in the dataset. To visualize trends in planting over time, I
 created a density plot of the date_planted variable. I used the function
-after_stat() and specified ‘scaled’ to scale the density estimate to a
-maximum of 1.
+after_stat() in the ggplot aesthetics and specified ‘scaled’ to scale
+the density estimate to a maximum of 1.
 
 ``` r
 #Density plot of planting date

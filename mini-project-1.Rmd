@@ -84,10 +84,10 @@ And that is exactly the first thing that you will do!
 
 <!-------------------------- Start your work below ---------------------------->
 
-1: CHOICE_1\_vancouver_trees\
-2: CHOICE_2\_parking_meters\
-3: CHOICE_3\_flow_sample\
-4: CHOICE_4\_building_permits
+1: CHOICE_1\ vancouver_trees\
+2: CHOICE_2\ parking_meters\
+3: CHOICE_3\ flow_sample\
+4: CHOICE_4\ building_permits
 
 <!----------------------------------------------------------------------------->
 
@@ -103,6 +103,7 @@ To explore attributes of each of the four datasets, I will use the glimpse() fun
 #Vancouver Street Trees
 glimpse(vancouver_trees)
 class(vancouver_trees)
+#Documentation
 #?vancouver_trees Edit: This code is commented out so the documentation does not appear. To run this code for yourself, remove the hashtag and run the command in RStudio
 ```
 Using the glimpse() function, the dataset contains 146,611 rows and 20 variables. 7 variables are double precision (continuous quantitative value), 12 are character strings, and one is a date. From the class function I learned the dataset is a tibble. In the documentation, I see that the information it contains is about public trees in the City of Vancouver. It is updated weekly, except for tree attributes which are rarely updated.
@@ -112,6 +113,7 @@ Using the glimpse() function, the dataset contains 146,611 rows and 20 variables
 #Vancouver Parking Meters
 glimpse(parking_meters)
 class(parking_meters)
+#Documentation
 #?parking_meters
 ```
 This dataset contains 10,032 rows and 22 variables. Two of the variables are double precision and 20 are character strings. The dataset is a tibble. The information it contains is about the rates and time limits for parking meters in Vancouver, shown for entire block faces rather than individual meters. The data is updated weekly.
@@ -120,6 +122,7 @@ This dataset contains 10,032 rows and 22 variables. Two of the variables are dou
 #Annual Bow River Banff Flow Rate Extremes
 glimpse(flow_sample)
 class(flow_sample)
+#Documentation
 #?flow_sample
 ```
 This dataset contains 218 rows and 7 variables. Four of the variables are double precision and three are character strings. The dataset is a tibble. The information contained in this dataset is historical flow rate extrema data collected by the Government of Canada at station 05BB001, located on the Bow River near Banff, Alberta.
@@ -128,6 +131,7 @@ This dataset contains 218 rows and 7 variables. Four of the variables are double
 #Vancouver Building Permits
 glimpse(building_permits)
 class(building_permits)
+#Documentation
 #?building_permits
 ```
 This dataset contains 20,680 rows and 14 variables. Three of the varaibles are double precision, one is a date, and 10 are character strings. The dataset is a subclass of tibble. The information it contains is about building permits issued by the City of Vancouver since the year 2017, updated monthly for the current year.
@@ -248,7 +252,7 @@ From this chart, it is clear that trees without a root barrier are larger on ave
 
 **Density Plot**  
 
-Each tree that was planted has an associated planting date (except for those with missing date values, of which there are 76,548); therefore, a density plot of this numeric variable can be used to explore temporal patterns in the dataset. To visualize trends in planting over time, I created a density plot of the date_planted variable.  I used the function after_stat() and specified 'scaled' to scale the density estimate to a maximum of 1.
+Each tree that was planted has an associated planting date (except for those with missing date values, of which there are 76,548); therefore, a density plot of this numeric variable can be used to explore temporal patterns in the dataset. To visualize trends in planting over time, I created a density plot of the date_planted variable.  I used the function after_stat() in the ggplot aesthetics and specified 'scaled' to scale the density estimate to a maximum of 1.
 
 ```{r}
 #Density plot of planting date

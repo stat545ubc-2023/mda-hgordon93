@@ -15,7 +15,8 @@ The open data portal for this dataset can be found [here.](https://opendata.vanc
 
 The following files can be found in this repository:  
 
-1. ***README*** | This document, an orientation to the project and project files. 
+1. ***README*** | This document, an orientation to the project and project files.
+
 **Milestone 1 folder** 
 
 2. ***mini-project-1.Rmd*** | This Rmarkdown file contains markdown content describing the analysis for milestone 1, with R code chunks embedded. The code and text can be edited. If you want to run the code in RStudio, use this file.

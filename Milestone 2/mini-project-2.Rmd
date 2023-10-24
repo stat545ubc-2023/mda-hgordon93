@@ -1,6 +1,6 @@
 ---
 title: "Mini Data Analysis Milestone 2"
-output: html_document
+output: github_document
 ---
 
 *To complete this milestone, you can either edit [this `.rmd` file](https://raw.githubusercontent.com/UBC-STAT/stat545.stat.ubc.ca/master/content/mini-project/mini-project-2.Rmd) directly. Fill in the sections that are commented out with `<!--- start your work here--->`. When you are done, make sure to knit to an `.md` file by changing the output in the YAML header to `github_document`, before submitting a tagged release on canvas.*
@@ -206,6 +206,8 @@ ggplot(aes(date_planted, count, color=genus_name))+
   labs(title="Five most common tree genera by planting date", x="Date planted", y="Number of trees")
 
 ```
+
+
 This exercise doesn't really answer my research question, because I am less interested in the exact date that trees were planted and more interested in trends over long periods of time. 
 
 ### Research Question 3 
@@ -242,6 +244,8 @@ trees %>% group_by(genus_name, species_name) %>%
   labs(title="Median and maximum diameter by tree species", x="Median diameter (in)", y="Max diameter (in)")
 
 ```
+
+
 This plot doesn't answer my original question - what neighbourhoods the largest trees are located in - but it does show some interesting relationships between median and max diameter for different species. 
 
 
@@ -276,6 +280,8 @@ trees %>% mutate(type = case_when(
   labs(title="Distribution of tree type by neighbourhood", y="Log transformed number of trees", x="")+
   theme_minimal()
 ```
+
+
 These two exercises enabled me to answer the research question.
 
 
@@ -317,13 +323,13 @@ Based on the definition above, can you identify if your data is tidy or untidy? 
 
 The vancouver_trees dataset has 20 variables. I will choose the following eight variables and determine whether the data is tidy or untidy:
 
-tree_id
-civic_number
-genus_name
-species_name
-cultivar_name
-plant_area
-on_street
+tree_id,
+civic_number,
+genus_name,
+species_name,
+cultivar_name,
+plant_area,
+on_street,
 neighbourhood_name
 
 ```{r}
@@ -490,19 +496,15 @@ Take a summary table that you made from Task 1, and write it as a csv file in yo
 <!-------------------------- Start your work below ---------------------------->
 
 ```{r}
-
 size_trees <- trees %>% group_by(genus_name, species_name) %>% 
   summarise(max=max(diameter), median = median(diameter)) %>% 
   arrange(desc(max)) %>% 
   filter(max<300)
   
 write_csv(size_trees, here::here("trees_diameter_max_median.csv"))
-
 ```
 
-
 <!----------------------------------------------------------------------------->
-
 ## 4.2 (3 points)
 
 Write your model object from Task 3 to an R binary file (an RDS), and load it again. Be sure to save the binary file in your `output` folder. Use the functions `saveRDS()` and `readRDS()`.
@@ -510,6 +512,15 @@ Write your model object from Task 3 to an R binary file (an RDS), and load it ag
 -   The same robustness and reproducibility criteria as in 4.1 apply here.
 
 <!-------------------------- Start your work below ---------------------------->
+
+```{r}
+
+saveRDS(dbh_lm, "trees_model.rds")
+
+readRDS("trees_model.rds")
+
+```
+
 
 <!----------------------------------------------------------------------------->
 

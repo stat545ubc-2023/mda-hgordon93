@@ -358,6 +358,8 @@ trees %>% mutate(period = case_when(date_planted < '2010-01-01' ~"Pre-plan", TRU
 This table gives me a nice summary with the number of trees in each
 genus planted before and after 2010.
 
+*Graphing*
+
 Next I will filter by the five most common genera to plot the number of
 trees in each genera by planting date, to view the trends in these
 genera over time. I will create a jitter plot and customize the alpha
@@ -407,6 +409,8 @@ which is tree diameter at breast height (DBH) in inches. The
 height_range_id variable does not give information about the actual
 height of a tree, but categorizes the height into 10 ft bins.
 
+*Summarizing*
+
 I will use the *summarise* function to calculate summary statistics for
 the diameter variable by genus/species. I will calculate the mean,
 range, min, max, median, and spread (standard deviation).
@@ -450,6 +454,8 @@ second part of my question. However the first three trees in the list
 have diameters between 305 in and 435 in - 25 to 36 ft! This seems
 likely to be an error (maybe circumference was measured instead of DBH).
 
+*Graphing*
+
 I will use the *filter* function to filter by max diameter (max\<300) to
 remove these outliers, and then plot the relationship between median
 diameter and max diameter for the tree species in the dataset. I will
@@ -482,6 +488,8 @@ relationships between median and max diameter for different species.
 
 **What is the distribution of coniferous and deciduous trees by
 neighbourhood in Vancouver?**
+
+*Summarizing*
 
 To answer this question, I will create a new categorical variable called
 ‘type’ from an existing categorical variable - genus_name. To do this, I
@@ -519,6 +527,8 @@ trees %>% mutate(type = case_when(
     ## #   neighbourhood_name <chr>, street_side_name <chr>, height_range_id <dbl>,
     ## #   diameter <dbl>, curb <chr>, date_planted <date>, longitude <dbl>,
     ## #   latitude <dbl>, type <chr>
+
+*Graphing*
 
 Next I will group the output by neighbourhood name and type, to create a
 bar chart displaying the number of trees of each type by neighbourhood.

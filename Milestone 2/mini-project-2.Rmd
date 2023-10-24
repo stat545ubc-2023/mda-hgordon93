@@ -116,7 +116,6 @@ I arranged the table in descending order by count (n). I can see that the first 
 
 *Graphing* 
 
-
 Due to the fact that there is not much variability in the proportion of trees planted with a root barrier in the top 10 species, I will instead examine the frequency distribution across species for which some trees were planted with a root barrier. I will plot three histograms with differing binwidths.
 
 ```{r}
@@ -191,6 +190,9 @@ trees %>% mutate(period = case_when(date_planted < '2010-01-01' ~"Pre-plan", TRU
 ```
 This table gives me a nice summary with the number of trees in each genus planted before and after 2010. 
 
+
+*Graphing* 
+
 Next I will filter by the five most common genera to plot the number of trees in each genera by planting date, to view the trends in these genera over time. I will create a jitter plot and customize the alpha transparency so that trees of different genera planted on the same dates will be visible.
 
 ```{r}
@@ -221,6 +223,9 @@ Modified research question:
 
 I decided to change this question from a focus on the *tallest* to *largest* trees so that I could examine the numerical variable diameter, which is tree diameter at breast height (DBH) in inches. The height_range_id variable does not give information about the actual height of a tree, but categorizes the height into 10 ft bins. 
 
+
+*Summarizing*
+
 I will use the *summarise* function to calculate summary statistics for the diameter variable by genus/species. I will calculate the mean, range, min, max, median, and spread (standard deviation).
 
 ```{r}
@@ -229,6 +234,9 @@ trees %>% group_by(genus_name, species_name) %>%
   arrange(desc(max))
 ```
 I arranged the output in descending order by max height, which shows me the 10 largest trees by diameter. This table gives me an answer to the second part of my question. However the first three trees in the list have diameters between 305 in and 435 in - 25 to 36 ft! This seems likely to be an error (maybe circumference was measured instead of DBH). 
+
+
+*Graphing* 
 
 I will use the *filter* function to filter by max diameter (max<300) to remove these outliers, and then plot the relationship between median diameter and max diameter for the tree species in the dataset. I will use two geom layers - geom_point and geom_smooth to plot the individual data points and the fitted linear model.
 
@@ -255,6 +263,8 @@ This plot doesn't answer my original question - what neighbourhoods the largest 
 **What is the distribution of coniferous and deciduous trees by neighbourhood in Vancouver?** 
 
 
+*Summarizing* 
+
 To answer this question, I will create a new categorical variable called 'type' from an existing categorical variable - genus_name. To do this, I need to know what genera are coniferous and which are deciduous. From examining my dataset, I know that more of the trees are deciduous, therefore I identified all of the coniferous genera. I will use the *mutate* function to create a new column called type, and the *case_when* function to call out the genera that are coniferous to assign them the value 'Coniferous' and assign all other genera the value 'Deciduous.'
 
 ```{r}
@@ -263,6 +273,9 @@ trees %>% mutate(type = case_when(
      TRUE ~ 'Deciduous')) %>% 
   arrange(type)
 ```
+
+
+*Graphing* 
 
 Next I will group the output by neighbourhood name and type, to create a bar chart displaying the number of trees of each type by neighbourhood. I will use the function *scale_y_log10* to log transform the y axis so the differences between the number of coniferous and deciduous trees by neighbourhood can be visualized more easily.
 

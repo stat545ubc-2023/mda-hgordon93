@@ -8,6 +8,7 @@ And hopefully the first of many. Let’s get started:
 1.  Install the [`datateachr`](https://github.com/UBC-MDS/datateachr)
     package by typing the following into your **R terminal**:
 
+
 <!-- -->
 
     install.packages("devtools")
